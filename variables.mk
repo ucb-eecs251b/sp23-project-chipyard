@@ -62,7 +62,7 @@ HELP_LINES = "" \
 #   - make it so that you only change 1 param to change most or all of them!
 #   - mainly intended for quick developer setup for common flags
 #########################################################################################
-SUB_PROJECT ?= chipyard
+SUB_PROJECT ?= tileonly
 
 ifeq ($(SUB_PROJECT),chipyard)
 	SBT_PROJECT       ?= chipyard
@@ -122,6 +122,17 @@ ifeq ($(SUB_PROJECT),constellation)
 	GENERATOR_PACKAGE ?= chipyard
 	TB                ?= TestDriver
 	TOP               ?= NoC
+endif
+ifeq ($(SUB_PROJECT),tileonly)
+	SBT_PROJECT       ?= chipyard
+	MODEL             ?= TestHarness
+	VLOG_MODEL        ?= $(MODEL)
+	MODEL_PACKAGE     ?= $(SBT_PROJECT)
+	CONFIG            ?= RocketTileOnlyConfig
+	CONFIG_PACKAGE    ?= $(SBT_PROJECT)
+	GENERATOR_PACKAGE ?= $(SBT_PROJECT)
+	TB                ?= TestDriver
+	TOP               ?= TileOnlyChipTop
 endif
 
 

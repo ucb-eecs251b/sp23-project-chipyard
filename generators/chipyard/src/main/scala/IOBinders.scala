@@ -480,3 +480,11 @@ class WithDividerOnlyClockGenerator extends OverrideLazyIOBinder({
     }
   }
 })
+
+
+
+class WithTileMasterNodePunchthrough extends OverrideLazyIOBinder({
+  (system: TileOnlySubsystem) => {
+    implicit p: Parameters = GetSystemParameters(system)
+  }
+})
