@@ -147,11 +147,11 @@ lazy val chipyard = (project in file("generators/chipyard"))
     sha3, // On separate line to allow for cleaner tutorial-setup patches
     dsptools, `rocket-dsp-utils`,
     gemmini, icenet, tracegen, cva6, nvdla, sodor, ibex, fft_generator,
-    constellation, mempress, ucie_digital)
+    constellation, mempress, ucie)
   .settings(libraryDependencies ++= rocketLibDeps.value)
   .settings(commonSettings)
 
-lazy val ucie_digital = (project in file("generators/sp23-project-ucie-digital"))
+lazy val ucie = (project in file("generators/sp23-project-ucie-digital"))
   .dependsOn(rocketchip)
   .settings(libraryDependencies ++= rocketLibDeps.value)
   .settings(chiselTestSettings)

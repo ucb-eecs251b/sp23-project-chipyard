@@ -40,6 +40,11 @@ class HwachaRocketConfig extends Config(
   new chipyard.config.WithSystemBusWidth(128) ++
   new chipyard.config.AbstractConfig)
 
+class UCIeRocketConfig extends Config(
+  new ucie.WithTLSpammer ++
+  new freechips.rocketchip.subsystem.WithNBigCores(1) ++
+  new chipyard.config.AbstractConfig)
+
 class MempressRocketConfig extends Config(
   new mempress.WithMemPress ++                                    // use Mempress (memory traffic generation) accelerator
   new chipyard.config.WithExtMemIdBits(7) ++                      // use 7 bits for tl like request id
