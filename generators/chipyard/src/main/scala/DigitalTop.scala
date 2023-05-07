@@ -18,6 +18,7 @@ class DigitalTop(implicit p: Parameters) extends ChipyardSystem
   with testchipip.CanHaveTraceIO // Enables optionally adding trace IO
   with testchipip.CanHaveBackingScratchpad // Enables optionally adding a backing scratchpad
   with testchipip.CanHaveBackingSbusScratchpad
+  with testchipip.CanHaveSbusSerDesScratchpad
   with testchipip.CanHavePeripheryBlockDevice // Enables optionally adding the block device
   with testchipip.CanHavePeripheryTLSerial // Enables optionally adding the backing memory and serial adapter
   with sifive.blocks.devices.i2c.HasPeripheryI2C // Enables optionally adding the sifive I2C

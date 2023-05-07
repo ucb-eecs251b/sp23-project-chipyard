@@ -40,12 +40,18 @@ class HwachaRocketConfig extends Config(
   new chipyard.config.WithSystemBusWidth(128) ++
   new chipyard.config.AbstractConfig)
 
-class UCIeRocketConfig extends Config(
+class UCIeRocketConfigSbusDirect extends Config(
   new ucie.WithTLSpammer(0x70000000L, 0xfffffL, 32, 16, 32) ++
   new testchipip.WithBackingSbusScratchpad(0x70000000L, 0xfffffL, 32) ++ // Can also parametrize for different address range, beatBytes, etc.
-  //new ucie.WithBackingSbusScratchpad(0x80000000L, ((4 << 20) - 1), 32)
   new freechips.rocketchip.subsystem.WithNBigCores(1) ++
   new chipyard.config.WithSystemBusWidth(256) ++
+  new chipyard.config.AbstractConfig)
+
+class UCIeRocketConfigSbusSerdes extends Config(
+  new ucie.WithTLSpammer(0x70000000L, 0xfffffL, 8, 4, 8) ++
+  new testchipip.WithSbusSerDesScratchpad(0x70000000L, 0xfffffL, 8, 4, 8, 64, 32) ++
+  new freechips.rocketchip.subsystem.WithNBigCores(1) ++
+  new chipyard.config.WithSystemBusWidth(64) ++
   new chipyard.config.AbstractConfig)
 
 class MempressRocketConfig extends Config(
